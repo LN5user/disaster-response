@@ -42,7 +42,7 @@ def return_figures(df):
 
     
 
-    layout_one = dict(title='Distribution of Message Genres and Help Type',
+    layout_one = dict(title='Distribution of Messages Genres and Help Type',
                       xaxis=dict(title="Count"),
                       yaxis=dict(title="Genre"),
                       height=500,

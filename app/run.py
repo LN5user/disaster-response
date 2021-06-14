@@ -2,8 +2,7 @@ import json
 from string import punctuation
 import plotly
 from flask import Flask
-from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from flask import render_template, request
 import joblib
 import pandas as pd
 from sqlalchemy import create_engine

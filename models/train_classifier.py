@@ -88,7 +88,7 @@ def build_model(grid_search):
     if grid_search == "True":
         print("Start Model Tuning")
         clf__max_depth = [int(x) for x in np.linspace(start = 5, stop = 15, num = 3)]
-        parameters = {'clf__estimator__metric': ["minkowski", "manhattan", "euclidean", "chebyshev"],
+        parameters = {'clf__estimator__metric': ["minkowski", "manhattan", "euclidean"],
                     'clf__estimator__n_neighbors': clf__max_depth,
                   }
         cv = GridSearchCV(pipeline,  param_grid=parameters)
@@ -127,7 +127,7 @@ def evaluate_model(model, X_test, Y_test, category_names):
         predicted = list(column)
         y_column = list(Y_test[category_names[i]].values)
         print(category_names[i])
-        print(classification_report(y_column, predicted))
+        print(classification_report(y_column, predicted, labels=np.unique(predicted)))
 
 
 def save_model(model, model_filepath):
