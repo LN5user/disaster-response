@@ -1,4 +1,3 @@
 .DS_Store
-*.csv
-*.pkl
+classifier.pkl
 __pycache__
