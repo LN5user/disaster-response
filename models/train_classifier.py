@@ -94,7 +94,7 @@ def build_model(grid_search):
         cv = GridSearchCV(pipeline,  param_grid=parameters)
         return  cv
     else:
-        best_params = joblib.load("best_params.pkl")
+        best_params = joblib.load("models/best_params.pkl")
         pipeline.set_params(**best_params)
         return pipeline
 
@@ -123,11 +123,10 @@ def evaluate_model(model, X_test, Y_test, category_names):
     print("Accuracy:", accuracy)
 
     # calculate precision, recall  f1-score for each categorie
-    for i, column in enumerate(y_pred.T):
-        predicted = list(column)
-        y_column = list(Y_test[category_names[i]].values)
-        print(category_names[i])
-        print(classification_report(y_column, predicted, labels=np.unique(predicted)))
+    for i, col_name in enumerate(category_names):
+        print(col_name)
+        print(classification_report(Y_test.iloc[:,i], y_pred[:,i],labels=np.unique(y_pred[:,i])))
+
 
 
 def save_model(model, model_filepath):
